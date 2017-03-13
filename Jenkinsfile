@@ -2,22 +2,22 @@ pipeline {
   agent any
 
   stages {
-    stage(Transfer){
+    stage('Transfer'){
       steps {
         echo "Transfering..."
       }
     }
-    stage(Calibrate){
+    stage('Calibrate'){
       steps {
         echo "Calibrating..."
       }
     }
-    stage(Image){
+    stage('Image'){
       steps {
         echo "Imaging..."
         }
     }
-    stage(Commit){
+    stage('Commit'){
       steps {
         echo "Commiting..."
         }
