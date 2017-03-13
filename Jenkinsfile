@@ -7,20 +7,30 @@ pipeline {
         echo "Transfering..."
       }
     }
-    stage('Calibrate'){
+    stage('Data Management & Averaging'){
       steps {
         echo "Calibrating..."
       }
     }
-    stage('Image'){
+    stage('Polarization & Cross Calibration'){
       steps {
         echo "Imaging..."
         }
     }
-    stage('Commit'){
+    stage('Flagging'){
       steps {
         echo "Commiting..."
         }
+    }
+    stage('SelfCal'){
+      steps {
+        echo "SelfCal"
+      }
+    }
+    stage('DDE Calibration / Peeling'){
+      steps {
+        echo "DDE Calibration / Peeling"
+      }
     }
   }
 }
