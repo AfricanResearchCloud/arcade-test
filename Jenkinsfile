@@ -9,6 +9,8 @@ pipeline {
     stage('Data Management & Averaging') {
       steps {
         echo 'Calibrating...'
+        echo 'Extra Callibration'
+        input 'Are you happy?'
       }
     }
     stage('Polarization & Cross Calibration') {
