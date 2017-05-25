@@ -1,35 +1,43 @@
 pipeline {
   agent any
-
   stages {
-    stage('Transfer'){
+    stage('Transfer') {
       steps {
-        echo "Transfering..."
+        echo 'Transfering...'
       }
     }
-    stage('Data Management & Averaging'){
+    stage('Data Management & Averaging') {
       steps {
-        echo "Calibrating..."
+        echo 'Calibrating...'
       }
     }
-    stage('Polarization & Cross Calibration'){
+    stage('Polarization & Cross Calibration') {
       steps {
-        echo "Imaging..."
-        }
-    }
-    stage('Flagging'){
-      steps {
-        echo "Commiting..."
-        }
-    }
-    stage('SelfCal'){
-      steps {
-        echo "SelfCal"
+        echo 'Imaging...'
       }
     }
-    stage('DDE Calibration / Peeling'){
+    stage('Flagging') {
       steps {
-        echo "DDE Calibration / Peeling"
+        parallel(
+          "Flagging": {
+            echo 'Commiting...'
+            
+          },
+          "More Flagging": {
+            sh 'docker run casapy'
+            
+          }
+        )
+      }
+    }
+    stage('SelfCal') {
+      steps {
+        echo 'SelfCal'
+      }
+    }
+    stage('DDE Calibration / Peeling') {
+      steps {
+        echo 'DDE Calibration / Peeling'
       }
     }
   }
