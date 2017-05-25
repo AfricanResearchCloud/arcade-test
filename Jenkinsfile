@@ -14,6 +14,10 @@ pipeline {
     stage('Polarization & Cross Calibration') {
       steps {
         echo 'Imaging...'
+        node(label: 'Get Jenkins Node') {
+          sh 'elasticcluster something or other'
+        }
+        
       }
     }
     stage('Flagging') {
